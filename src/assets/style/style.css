@@ -626,6 +626,22 @@ html{
   width: 80%;
 }
 
+.w-\[85\%\]{
+  width: 85%;
+}
+
+.w-\[90\%\]{
+  width: 90%;
+}
+
+.w-\[95\%\]{
+  width: 95%;
+}
+
+.w-\[90-\%\]{
+  width: 90-%;
+}
+
 .grid-cols-12{
   grid-template-columns: repeat(12, minmax(0, 1fr));
 }
@@ -805,5 +821,15 @@ html{
 
   .lg\:col-start-5{
     grid-column-start: 5;
+  }
+
+  .lg\:w-full{
+    width: 100%;
+  }
+}
+
+@media (min-width: 1280px){
+  .xl\:w-full{
+    width: 100%;
   }
 }

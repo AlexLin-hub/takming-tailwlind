@@ -1,6 +1,6 @@
 <template>
   <div class="flex h-screen items-center">
-    <div class="container h-full w-[80%] py-10 sm:w-full">
+    <div class="container h-full w-[90%] py-10 lg:w-full">
       <div class="grid h-full grid-cols-12 gap-5">
         <!-- Left -->
         <div
