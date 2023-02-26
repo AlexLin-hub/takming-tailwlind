@@ -594,6 +594,10 @@ html{
   display: grid;
 }
 
+.hidden{
+  display: none;
+}
+
 .h-screen{
   height: 100vh;
 }
@@ -809,8 +813,20 @@ html{
     grid-column: span 6 / span 6;
   }
 
+  .md\:col-span-4{
+    grid-column: span 4 / span 4;
+  }
+
+  .md\:col-span-8{
+    grid-column: span 8 / span 8;
+  }
+
   .md\:col-start-4{
     grid-column-start: 4;
+  }
+
+  .md\:block{
+    display: block;
   }
 }
 
@@ -819,8 +835,20 @@ html{
     grid-column: span 4 / span 4;
   }
 
+  .lg\:col-span-6{
+    grid-column: span 6 / span 6;
+  }
+
+  .lg\:col-span-8{
+    grid-column: span 8 / span 8;
+  }
+
   .lg\:col-start-5{
     grid-column-start: 5;
+  }
+
+  .lg\:block{
+    display: block;
   }
 
   .lg\:w-full{

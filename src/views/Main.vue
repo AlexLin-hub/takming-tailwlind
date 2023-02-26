@@ -4,11 +4,11 @@
       <div class="grid h-full grid-cols-12 gap-5">
         <!-- Left -->
         <div
-          class="h-max-[540px] col-span-8 h-full overflow-y-auto rounded-[18px] bg-white py-6 px-5"
+          class="h-max-[540px] col-span-full h-full overflow-y-auto rounded-[18px] bg-white py-6 px-5 lg:col-span-8"
         >
           <div class="grid grid-cols-12 gap-4">
             <!-- 01 -->
-            <div class="col-span-6">
+            <div class="col-span-full lg:col-span-6">
               <!-- Card -->
               <div
                 class="flex h-[110px] w-full items-center rounded-[18px] border-[1px] border-solid border-gray bg-white py-[14px] px-[10px] hover:border-white hover:shadow-md"
@@ -35,7 +35,7 @@
               </div>
             </div>
             <!-- 02 -->
-            <div class="col-span-6">
+            <div class="col-span-full lg:col-span-6">
               <!-- Card -->
               <div
                 class="flex h-[110px] w-full items-center rounded-[18px] border-[1px] border-solid border-gray bg-white py-[14px] px-[10px] hover:border-white hover:shadow-md"
@@ -62,7 +62,7 @@
               </div>
             </div>
             <!-- 03 -->
-            <div class="col-span-6">
+            <div class="col-span-full lg:col-span-6">
               <!-- Card -->
               <div
                 class="flex h-[110px] w-full items-center rounded-[18px] border-[1px] border-solid border-gray bg-white py-[14px] px-[10px] hover:border-white hover:shadow-md"
@@ -90,10 +90,11 @@
         </div>
         <!-- Right -->
         <div
-          class="h-max-[540px] col-span-4 h-full overflow-y-auto rounded-[18px] bg-white py-6 px-5"
+          class="h-max-[540px] hidden h-full overflow-y-auto rounded-[18px] bg-white py-6 px-5 lg:col-span-4 lg:block"
         >
-        <div>
-          <h2 class="font-serif text-xl font-bold">使用者資訊</h2></div>
+          <div>
+            <h2 class="font-serif text-xl font-bold">使用者資訊</h2>
+          </div>
         </div>
       </div>
     </div>
