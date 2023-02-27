@@ -1,8 +1,8 @@
 <template>
-  <div class="flex h-screen items-center">
-    <div class="container flex h-full w-[90%] flex-col py-10 lg:w-full">
+  <div class="">
+    <div class="container flex h-screen w-[90%] flex-col py-10 lg:w-full">
       <!-- 標題 -->
-      <div class="mb-7">
+      <div class="mb-7 grow-0">
         <h1 class="font-serif text-[48px] font-bold sm:text-[64px]">
           使用者列表
         </h1>
@@ -10,7 +10,7 @@
           關於 RESTful API 實作練習
         </h3>
       </div>
-      <div class="grid grow grid-cols-12 gap-5">
+      <div class="grid grow grid-cols-12 gap-5 overflow-auto">
         <!-- Left -->
         <div
           class="col-span-full overflow-y-auto rounded-[18px] bg-white py-6 px-5 lg:col-span-8"
@@ -113,7 +113,13 @@
             <ul class="grid grid-cols-3 gap-x-3">
               <!-- man -->
               <li>
-                <input class="peer hidden" type="radio" name="type" id="man" checked/>
+                <input
+                  class="peer hidden"
+                  type="radio"
+                  name="type"
+                  id="man"
+                  checked
+                />
                 <label
                   for="man"
                   class="flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-[1px] border-transparent bg-gray-light py-2 text-secondary hover:bg-gray hover:text-primary peer-checked:border-gray-dark peer-checked:text-primary"
