@@ -20,7 +20,7 @@
             <div class="col-span-full lg:col-span-6">
               <!-- Card -->
               <div
-                class="flex h-[110px] w-full cursor-pointer items-center rounded-[18px] border-[1px] border-solid border-gray bg-white py-[14px] px-[10px] hover:border-white hover:shadow-md"
+                class="group relative flex h-[110px] w-full cursor-pointer items-center rounded-[18px] border-[1px] border-solid border-gray bg-white py-[14px] px-[10px] hover:border-white hover:shadow-md"
               >
                 <!-- Avatar（區塊 1）-->
                 <div
@@ -31,7 +31,7 @@
                   ></span>
                 </div>
                 <!-- Info（區塊 2）-->
-                <div class="ml-[12px] flex flex-col">
+                <div class="ml-[12px] flex h-full flex-col">
                   <p class="text-[18px] font-medium">王小明</p>
                   <span class="text-[8px] text-gray-dark"
                     >2021070311411332</span
@@ -41,13 +41,19 @@
                     <span class="ml-[4px]">台北市內湖區環山路一段56號</span>
                   </div>
                 </div>
+                <!-- 刪除按鈕 -->
+                <button
+                  class="absolute top-3 right-3 hidden text-lg hover:text-secondary group-hover:block"
+                >
+                  <span class="mdi mdi-trash-can"></span>
+                </button>
               </div>
             </div>
             <!-- 02 -->
             <div class="col-span-full lg:col-span-6">
               <!-- Card -->
               <div
-                class="flex h-[110px] w-full cursor-pointer items-center rounded-[18px] border-[1px] border-solid border-gray bg-white py-[14px] px-[10px] hover:border-white hover:shadow-md"
+                class="group relative flex h-[110px] w-full cursor-pointer items-center rounded-[18px] border-[1px] border-solid border-gray bg-white py-[14px] px-[10px] hover:border-white hover:shadow-md"
               >
                 <!-- Avatar（區塊 1）-->
                 <div
@@ -68,13 +74,19 @@
                     <span class="ml-[4px]">台北市內湖區環山路一段56號</span>
                   </div>
                 </div>
+                <!-- 刪除按鈕 -->
+                <button
+                  class="absolute top-3 right-3 hidden text-lg hover:text-secondary group-hover:block"
+                >
+                  <span class="mdi mdi-trash-can"></span>
+                </button>
               </div>
             </div>
             <!-- 03 -->
             <div class="col-span-full lg:col-span-6">
               <!-- Card -->
               <div
-                class="flex h-[110px] w-full cursor-pointer items-center rounded-[18px] border-[1px] border-solid border-gray bg-white py-[14px] px-[10px] hover:border-white hover:shadow-md"
+                class="group relative flex h-[110px] w-full cursor-pointer items-center rounded-[18px] border-[1px] border-solid border-gray bg-white py-[14px] px-[10px] hover:border-white hover:shadow-md"
               >
                 <!-- Avatar（區塊 1）-->
                 <div
@@ -93,6 +105,12 @@
                     <span class="ml-[4px]">台北市內湖區環山路一段56號</span>
                   </div>
                 </div>
+                <!-- 刪除按鈕 -->
+                <button
+                  class="absolute top-3 right-3 hidden text-lg hover:text-secondary group-hover:block"
+                >
+                  <span class="mdi mdi-trash-can"></span>
+                </button>
               </div>
             </div>
           </div>
@@ -113,16 +131,10 @@
             <ul class="grid grid-cols-3 gap-x-3">
               <!-- man -->
               <li>
-                <input
-                  class="peer hidden"
-                  type="radio"
-                  name="type"
-                  id="man"
-                  checked
-                />
+                <input class="peer hidden" type="radio" name="type" id="man" />
                 <label
                   for="man"
-                  class="flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-[1px] border-transparent bg-gray-light py-2 text-secondary hover:bg-gray hover:text-primary peer-checked:border-gray-dark peer-checked:text-primary"
+                  class="flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-[1px] border-transparent bg-gray-light py-2 text-secondary peer-checked:border-gray-dark peer-checked:text-primary hover:peer-enabled:bg-gray hover:peer-enabled:text-primary peer-disabled:text-gray-dark peer-checked:peer-disabled:border-gray peer-checked:peer-disabled:text-gray-dark"
                 >
                   <!-- icon -->
                   <span class="mdi mdi-face-man text-[30px]"></span>
@@ -140,7 +152,7 @@
                 />
                 <label
                   for="woman"
-                  class="flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-[1px] border-transparent bg-gray-light py-2 text-secondary hover:bg-gray hover:text-primary peer-checked:border-gray-dark peer-checked:text-primary"
+                  class="flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-[1px] border-transparent bg-gray-light py-2 text-secondary peer-checked:border-gray-dark peer-checked:text-primary hover:peer-enabled:bg-gray hover:peer-enabled:text-primary peer-disabled:text-gray-dark peer-checked:peer-disabled:border-gray peer-checked:peer-disabled:text-gray-dark"
                 >
                   <!-- icon -->
                   <span class="mdi mdi-face-woman text-[30px]"></span>
@@ -158,7 +170,7 @@
                 />
                 <label
                   for="unknow"
-                  class="flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-[1px] border-transparent bg-gray-light py-2 text-secondary hover:bg-gray hover:text-primary peer-checked:border-gray-dark peer-checked:text-primary"
+                  class="flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-[1px] border-transparent bg-gray-light py-2 text-secondary peer-checked:border-gray-dark peer-checked:text-primary hover:peer-enabled:bg-gray hover:peer-enabled:text-primary peer-disabled:text-gray-dark peer-checked:peer-disabled:border-gray peer-checked:peer-disabled:text-gray-dark"
                 >
                   <!-- icon -->
                   <span class="mdi mdi-ninja text-[30px]"></span>
@@ -199,7 +211,7 @@
               <!-- 新增 -->
               <div v-if="true">
                 <button
-                  class="w-full rounded-lg bg-primary py-4 text-[14px] text-white"
+                  class="w-full rounded-lg bg-primary py-4 text-[14px] text-white disabled:cursor-not-allowed disabled:bg-gray disabled:text-gray-dark"
                 >
                   新增
                 </button>
@@ -208,13 +220,13 @@
               <div v-else class="flex gap-x-3">
                 <!-- 取消 -->
                 <button
-                  class="w-full rounded-lg border-[1px] border-primary py-4 text-[14px] text-primary"
+                  class="w-full rounded-lg border-[1px] border-primary py-4 text-[14px] text-primary disabled:cursor-not-allowed disabled:border-gray disabled:text-gray-dark"
                 >
                   取消
                 </button>
                 <!-- 儲存 -->
                 <button
-                  class="w-full rounded-lg bg-primary py-4 text-[14px] text-white"
+                  class="w-full rounded-lg bg-primary py-4 text-[14px] text-white disabled:cursor-not-allowed disabled:bg-gray disabled:text-gray-dark"
                 >
                   儲存
                 </button>
