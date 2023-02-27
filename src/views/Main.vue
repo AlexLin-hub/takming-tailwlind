@@ -1,8 +1,6 @@
 <template>
   <div class="flex h-screen items-center">
-    <div
-      class="container flex h-full w-[90%] flex-col overflow-auto py-10 lg:w-full"
-    >
+    <div class="container flex h-full w-[90%] flex-col py-10 lg:w-full">
       <!-- 標題 -->
       <div class="mb-7">
         <h1 class="font-serif text-[48px] font-bold sm:text-[64px]">
@@ -15,7 +13,7 @@
       <div class="grid grow grid-cols-12 gap-5">
         <!-- Left -->
         <div
-          class="col-span-full max-h-[600px] overflow-y-auto rounded-[18px] bg-white py-6 px-5 lg:col-span-8"
+          class="col-span-full overflow-y-auto rounded-[18px] bg-white py-6 px-5 lg:col-span-8"
         >
           <div class="grid grid-cols-12 gap-4">
             <!-- 01 -->
@@ -101,7 +99,7 @@
         </div>
         <!-- Right -->
         <div
-          class="h-max-[540px] hidden h-full overflow-y-auto rounded-[18px] bg-white py-6 px-5 lg:col-span-4 lg:block"
+          class="hidden overflow-y-auto rounded-[18px] bg-white py-6 px-5 lg:col-span-4 lg:block"
         >
           <div class="flex h-full flex-col gap-4">
             <h2 class="font-serif text-xl font-bold">使用者資訊</h2>
@@ -112,37 +110,57 @@
               placeholder="姓名"
             />
             <!-- 性別 -->
-            <div class="flex grid-cols-3 gap-x-3">
+            <ul class="grid grid-cols-3 gap-x-3">
               <!-- man -->
-              <div
-                class="flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-[1px] border-gray-dark bg-gray-light py-2 hover:bg-gray"
-              >
-                <!-- icon -->
-                <span class="mdi mdi-face-man text-[30px] text-primary"></span>
-                <!-- gender -->
-                <span class="text-xs">男</span>
-              </div>
+              <li>
+                <input class="peer hidden" type="radio" name="type" id="man" checked/>
+                <label
+                  for="man"
+                  class="flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-[1px] border-transparent bg-gray-light py-2 text-secondary hover:bg-gray hover:text-primary peer-checked:border-gray-dark peer-checked:text-primary"
+                >
+                  <!-- icon -->
+                  <span class="mdi mdi-face-man text-[30px]"></span>
+                  <!-- gender -->
+                  <span class="text-xs">男</span>
+                </label>
+              </li>
               <!-- woman -->
-              <div
-                class="flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-[1px] border-transparent bg-gray-light py-2 hover:bg-gray"
-              >
-                <!-- icon -->
-                <span
-                  class="mdi mdi-face-woman text-[30px] text-primary"
-                ></span>
-                <!-- gender -->
-                <span class="text-xs">女</span>
-              </div>
-              <!-- Unknow -->
-              <div
-                class="flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-[1px] border-transparent bg-gray-light py-2 hover:bg-gray"
-              >
-                <!-- icon -->
-                <span class="mdi mdi-ninja text-[30px] text-primary"></span>
-                <!-- gender -->
-                <span class="text-xs">其他</span>
-              </div>
-            </div>
+              <li>
+                <input
+                  class="peer hidden"
+                  type="radio"
+                  name="type"
+                  id="woman"
+                />
+                <label
+                  for="woman"
+                  class="flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-[1px] border-transparent bg-gray-light py-2 text-secondary hover:bg-gray hover:text-primary peer-checked:border-gray-dark peer-checked:text-primary"
+                >
+                  <!-- icon -->
+                  <span class="mdi mdi-face-woman text-[30px]"></span>
+                  <!-- gender -->
+                  <span class="text-xs">女</span>
+                </label>
+              </li>
+              <!-- unknow -->
+              <li>
+                <input
+                  class="peer hidden"
+                  type="radio"
+                  name="type"
+                  id="unknow"
+                />
+                <label
+                  for="unknow"
+                  class="flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-[1px] border-transparent bg-gray-light py-2 text-secondary hover:bg-gray hover:text-primary peer-checked:border-gray-dark peer-checked:text-primary"
+                >
+                  <!-- icon -->
+                  <span class="mdi mdi-ninja text-[30px]"></span>
+                  <!-- gender -->
+                  <span class="text-xs">其他</span>
+                </label>
+              </li>
+            </ul>
             <!-- 電子郵件 -->
             <input
               class="w-full rounded-lg bg-gray-light py-4 px-3 outline-gray-dark"
