@@ -17,7 +17,11 @@
         >
           <div class="grid grid-cols-12 gap-4">
             <!-- 01 -->
-            <div class="col-span-full lg:col-span-6">
+            <div
+              v-for="item in items"
+              :key="item.UID"
+              class="col-span-full lg:col-span-6"
+            >
               <!-- Card -->
               <div
                 class="group relative flex h-[110px] w-full cursor-pointer items-center rounded-[18px] border-[1px] border-solid border-gray bg-white py-[14px] px-[10px] hover:border-white hover:shadow-md"
@@ -32,77 +36,11 @@
                 </div>
                 <!-- Info（區塊 2）-->
                 <div class="ml-[12px] flex h-full flex-col">
-                  <p class="text-[18px] font-medium">王小明</p>
-                  <span class="text-[8px] text-gray-dark"
-                    >2021070311411332</span
-                  >
+                  <p class="text-[18px] font-medium">{{ item.name }}</p>
+                  <span class="text-[8px] text-gray-dark">{{ item.UID }}</span>
                   <div class="mt-auto text-[10px]">
-                    <span class="text-gray-dark">114</span>
-                    <span class="ml-[4px]">台北市內湖區環山路一段56號</span>
-                  </div>
-                </div>
-                <!-- 刪除按鈕 -->
-                <button
-                  class="absolute top-3 right-3 hidden text-lg hover:text-secondary group-hover:block"
-                >
-                  <span class="mdi mdi-trash-can"></span>
-                </button>
-              </div>
-            </div>
-            <!-- 02 -->
-            <div class="col-span-full lg:col-span-6">
-              <!-- Card -->
-              <div
-                class="group relative flex h-[110px] w-full cursor-pointer items-center rounded-[18px] border-[1px] border-solid border-gray bg-white py-[14px] px-[10px] hover:border-white hover:shadow-md"
-              >
-                <!-- Avatar（區塊 1）-->
-                <div
-                  class="flex h-[80px] w-[80px] items-center justify-center rounded-[8px] bg-gray"
-                >
-                  <span
-                    class="mdi mdi-face-woman-profile text-[40px] text-secondary"
-                  ></span>
-                </div>
-                <!-- Info（區塊 2）-->
-                <div class="ml-[12px] flex h-full flex-col">
-                  <p class="text-[18px] font-medium">王小華</p>
-                  <span class="text-[8px] text-gray-dark"
-                    >2021070311411332</span
-                  >
-                  <div class="mt-auto text-[10px]">
-                    <span class="text-gray-dark">114</span>
-                    <span class="ml-[4px]">台北市內湖區環山路一段56號</span>
-                  </div>
-                </div>
-                <!-- 刪除按鈕 -->
-                <button
-                  class="absolute top-3 right-3 hidden text-lg hover:text-secondary group-hover:block"
-                >
-                  <span class="mdi mdi-trash-can"></span>
-                </button>
-              </div>
-            </div>
-            <!-- 03 -->
-            <div class="col-span-full lg:col-span-6">
-              <!-- Card -->
-              <div
-                class="group relative flex h-[110px] w-full cursor-pointer items-center rounded-[18px] border-[1px] border-solid border-gray bg-white py-[14px] px-[10px] hover:border-white hover:shadow-md"
-              >
-                <!-- Avatar（區塊 1）-->
-                <div
-                  class="flex h-[80px] w-[80px] items-center justify-center rounded-[8px] bg-gray"
-                >
-                  <span class="mdi mdi-ninja text-[40px] text-secondary"></span>
-                </div>
-                <!-- Info（區塊 2）-->
-                <div class="ml-[12px] flex h-full flex-col">
-                  <p class="text-[18px] font-medium">陳小龍</p>
-                  <span class="text-[8px] text-gray-dark"
-                    >2021070311411332</span
-                  >
-                  <div class="mt-auto text-[10px]">
-                    <span class="text-gray-dark">114</span>
-                    <span class="ml-[4px]">台北市內湖區環山路一段56號</span>
+                    <span class="text-gray-dark">{{ item.zip }}</span>
+                    <span class="ml-[4px]">{{ item.address }}</span>
                   </div>
                 </div>
                 <!-- 刪除按鈕 -->
@@ -266,6 +204,204 @@ export default {
         zip: "",
         address: "",
       },
+      items: [
+        {
+          UID: "2021062012003739",
+          SID: "ROOT",
+          CID: "",
+          name: "Am",
+          phone: "0987654334",
+          gender: "M",
+          email: "Takming014@takming.edu.tw",
+          zip: 300,
+          address: "新竹縣湖口鄉德和路228號",
+          createTime: "2021-06-20 12:00:37",
+          updateTime: "2021-06-20 12:00:37",
+          isDelete: null,
+        },
+        {
+          UID: "2021062012000719",
+          SID: "ROOT",
+          CID: "",
+          name: "Snap",
+          phone: "0987654333",
+          gender: "O",
+          email: "Takming013@takming.edu.tw",
+          zip: 360,
+          address: "苗栗縣造橋鄉平仁路74巷2號5樓",
+          createTime: "2021-06-20 12:00:07",
+          updateTime: "2021-06-20 12:00:07",
+          isDelete: null,
+        },
+        {
+          UID: "2021062011595088",
+          SID: "ROOT",
+          CID: "",
+          name: "Oreo",
+          phone: "0987654332",
+          gender: "O",
+          email: "Takming012@takming.edu.tw",
+          zip: 360,
+          address: "苗栗縣後龍鎮中心路82巷3號",
+          createTime: "2021-06-20 11:59:50",
+          updateTime: "2021-06-20 11:59:50",
+          isDelete: null,
+        },
+        {
+          UID: "2021062011592075",
+          SID: "ROOT",
+          CID: "",
+          name: "John",
+          phone: "0987654331",
+          gender: "W",
+          email: "Takming011@takming.edu.tw",
+          zip: 400,
+          address: "台中市西屯區朝富路140巷1號",
+          createTime: "2021-06-20 11:59:20",
+          updateTime: "2021-06-20 11:59:20",
+          isDelete: null,
+        },
+        {
+          UID: "2021062011581348",
+          SID: "ROOT",
+          CID: "",
+          name: "Eric",
+          phone: "0987654330",
+          gender: "M",
+          email: "Takming010@takming.edu.tw",
+          zip: 222,
+          address: "新北市新店區僑信路200號",
+          createTime: "2021-06-20 11:58:13",
+          updateTime: "2021-06-20 11:58:13",
+          isDelete: null,
+        },
+        {
+          UID: "2021062011574160",
+          SID: "ROOT",
+          CID: "",
+          name: "Gimmy",
+          phone: "0987654329",
+          gender: "W",
+          email: "Takming009@takming.edu.tw",
+          zip: 222,
+          address: "新北市新莊區幸福路134巷19號",
+          createTime: "2021-06-20 11:57:41",
+          updateTime: "2021-06-20 11:57:41",
+          isDelete: null,
+        },
+        {
+          UID: "2021062011571357",
+          SID: "ROOT",
+          CID: "",
+          name: "Fraudeau",
+          phone: "0987654328",
+          gender: "W",
+          email: "Takming008@takming.edu.tw",
+          zip: 400,
+          address: "台中市神岡區昌平路五段72巷26號2樓",
+          createTime: "2021-06-20 11:57:13",
+          updateTime: "2021-06-20 11:57:13",
+          isDelete: null,
+        },
+        {
+          UID: "2021062011555641",
+          SID: "ROOT",
+          CID: "",
+          name: "Gino",
+          phone: "0987654327",
+          gender: "M",
+          email: "Takming007@takming.edu.tw",
+          zip: 222,
+          address: "新北市三重區進安街143巷11號4樓",
+          createTime: "2021-06-20 11:55:56",
+          updateTime: "2021-06-20 11:56:14",
+          isDelete: null,
+        },
+        {
+          UID: "2021062011553355",
+          SID: "ROOT",
+          CID: "",
+          name: "Hoolkca",
+          phone: "0987654326",
+          gender: "W",
+          email: "Takming006@takming.edu.tw",
+          zip: 700,
+          address: "台南市北區公園北路167巷5號",
+          createTime: "2021-06-20 11:55:33",
+          updateTime: "2021-06-20 11:55:33",
+          isDelete: null,
+        },
+        {
+          UID: "2021062011545961",
+          SID: "ROOT",
+          CID: "",
+          name: "Eric",
+          phone: "0987654325",
+          gender: "M",
+          email: "Takming005@takming.edu.tw",
+          zip: 540,
+          address: "南投縣埔里鎮八德路21巷19號4樓",
+          createTime: "2021-06-20 11:54:59",
+          updateTime: "2021-06-20 11:54:59",
+          isDelete: null,
+        },
+        {
+          UID: "2021062011535584",
+          SID: "ROOT",
+          CID: "",
+          name: "麥克華斯基",
+          phone: "0987654324",
+          gender: "M",
+          email: "Takming004@takming.edu.tw",
+          zip: 802,
+          address: "高雄市苓雅區四維三路2號",
+          createTime: "2021-06-20 11:53:55",
+          updateTime: "2021-06-20 11:53:55",
+          isDelete: null,
+        },
+        {
+          UID: "2021062011513840",
+          SID: "ROOT",
+          CID: "",
+          name: "史瑞克",
+          phone: "0987654323",
+          gender: "O",
+          email: "Takming003@takming.edu.tw",
+          zip: 104,
+          address: "台北市中山區民權東路二段109號",
+          createTime: "2021-06-20 11:51:38",
+          updateTime: "2021-06-20 11:51:38",
+          isDelete: null,
+        },
+        {
+          UID: "2021062011493428",
+          SID: "ROOT",
+          CID: "",
+          name: "陳小華",
+          phone: "0987654322",
+          gender: "M",
+          email: "Takming002@takming.edu.tw",
+          zip: 114,
+          address: "台北市內湖區內湖路一段285巷68弄7號",
+          createTime: "2021-06-20 11:49:34",
+          updateTime: "2021-06-20 11:50:40",
+          isDelete: null,
+        },
+        {
+          UID: "2021062011491777",
+          SID: "ROOT",
+          CID: "",
+          name: "王小明",
+          phone: "0987654321",
+          gender: "M",
+          email: "Takming001@takming.edu.tw",
+          zip: 114,
+          address: "台北市內湖區環山路一段56號",
+          createTime: "2021-06-20 11:49:17",
+          updateTime: "2021-06-20 11:49:17",
+          isDelete: null,
+        },
+      ],
     };
   },
 };
