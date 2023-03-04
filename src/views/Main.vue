@@ -123,7 +123,6 @@
             <h2 class="font-serif text-xl font-bold">使用者資訊</h2>
             <!-- 姓名 -->
             <input
-              v-model="name"
               class="w-full rounded-lg bg-gray-light py-4 px-3 outline-gray-dark"
               type="text"
               placeholder="姓名"
@@ -249,13 +248,7 @@
 export default {
   data() {
     return {
-      name: "",
     };
-  },
-  watch: {
-    name() {
-      console.log(this.name);
-    },
   },
 };
 </script>
