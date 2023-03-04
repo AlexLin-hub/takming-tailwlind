@@ -23,36 +23,11 @@
               class="col-span-full lg:col-span-6"
             >
               <!-- Card -->
-              <div
-                class="group relative flex h-[110px] w-full cursor-pointer items-center rounded-[18px] border-[1px] border-solid border-gray bg-white py-[14px] px-[10px] hover:border-white hover:shadow-md"
-                @click="triggerActions('select', item)"
-              >
-                <!-- Avatar（區塊 1）-->
-                <div
-                  class="flex h-[80px] w-[80px] items-center justify-center rounded-[8px] bg-gray"
-                >
-                  <span
-                    class="mdi text-[40px] text-secondary"
-                    :class="[handleIcon(item.gender)]"
-                  ></span>
-                </div>
-                <!-- Info（區塊 2）-->
-                <div class="ml-[12px] flex h-full flex-col">
-                  <p class="text-[18px] font-medium">{{ item.name }}</p>
-                  <span class="text-[8px] text-gray-dark">{{ item.UID }}</span>
-                  <div class="mt-auto text-[10px]">
-                    <span class="text-gray-dark">{{ item.zip }}</span>
-                    <span class="ml-[4px]">{{ item.address }}</span>
-                  </div>
-                </div>
-                <!-- 刪除按鈕 -->
-                <button
-                  class="absolute top-3 right-3 hidden text-lg hover:text-secondary group-hover:block"
-                  @click.stop="triggerActions('delete', item)"
-                >
-                  <span class="mdi mdi-trash-can"></span>
-                </button>
-              </div>
+              <Card
+                :user="item"
+                @select="triggerActions('select', $event)"
+                @delete="triggerActions('delete', $event)"
+              />
             </div>
           </div>
         </div>
@@ -199,7 +174,9 @@
   </div>
 </template>
 <script>
+import Card from "../components/card.vue";
 export default {
+  components: { Card },
   data() {
     return {
       user: {
@@ -412,28 +389,15 @@ export default {
     };
   },
   methods: {
-    handleIcon(gender) {
-      switch (gender) {
-        case "M": {
-          return "mdi-face-man-profile";
-        }
-        case "W": {
-          return "mdi-face-woman-profile";
-        }
-        default: {
-          return "mdi-ninja";
-        }
-      }
-    },
     triggerActions(key, e) {
       switch (key) {
         case "create": {
-          console.log("create user", e);
           const { name, gender, email, phone, zip, address } = e;
           if (!name || !gender || !email || !phone || !zip || !address) return;
+          console.log("create user", e);
           const UID = new Date().getTime();
           this.items.unshift({ ...e, UID });
-          this.resetUser()
+          this.resetUser();
           break;
         }
         case "update": {
