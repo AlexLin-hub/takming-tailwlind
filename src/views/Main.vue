@@ -31,7 +31,8 @@
                   class="flex h-[80px] w-[80px] items-center justify-center rounded-[8px] bg-gray"
                 >
                   <span
-                    class="mdi mdi-face-man-profile text-[40px] text-secondary"
+                    class="mdi text-[40px] text-secondary"
+                    :class="[handleIcon(item.gender)]"
                   ></span>
                 </div>
                 <!-- Info（區塊 2）-->
@@ -403,6 +404,21 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    handleIcon(gender) {
+      switch (gender) {
+        case "M": {
+          return "mdi-face-man-profile";
+        }
+        case "W": {
+          return "mdi-face-woman-profile";
+        }
+        default: {
+          return "mdi-ninja";
+        }
+      }
+    },
   },
 };
 </script>
