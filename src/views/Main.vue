@@ -433,21 +433,44 @@ export default {
         }
         case "update": {
           console.log("update user", e);
+          const { UID } = e;
+          const userIndex = this.items.findIndex((user) => user["UID"] === UID);
+          this.items.splice(userIndex, 1, e);
+          this.resetUser()
           break;
         }
         case "cancel": {
           console.log("cancel");
+          this.resetUser();
           break;
         }
         case "select": {
           console.log("select user", e);
+          this.isCreate = false;
+          this.user = Object.assign({}, e);
           break;
         }
         case "delete": {
           console.log("delete user", e);
+          const { name, UID } = e;
+          const beDelete = confirm(
+            `刪除 ${name} 後，將無法復原。你確定要刪除嗎？`
+          );
+          if (beDelete) {
+            const userIndex = this.items.findIndex(
+              (user) => user["UID"] === UID
+            );
+            if (userIndex === -1) return;
+            this.items.splice(userIndex, 1);
+            this.resetUser();
+          }
           break;
         }
       }
+    },
+    resetUser() {
+      this.isCreate = true;
+      this.user = Object.assign({}, this.$options.data().user);
     },
   },
 };
