@@ -21,6 +21,7 @@
               v-for="item in items"
               :key="item.UID"
               class="col-span-full lg:col-span-6"
+              @click="triggerActions('select', item)"
             >
               <!-- Card -->
               <div
@@ -47,6 +48,7 @@
                 <!-- 刪除按鈕 -->
                 <button
                   class="absolute top-3 right-3 hidden text-lg hover:text-secondary group-hover:block"
+                  @click="triggerActions('delete', item)"
                 >
                   <span class="mdi mdi-trash-can"></span>
                 </button>
@@ -435,6 +437,14 @@ export default {
         }
         case "cancel": {
           console.log("cancel");
+          break;
+        }
+        case "select": {
+          console.log("select user", e);
+          break;
+        }
+        case "delete": {
+          console.log("delete user", e);
           break;
         }
       }
