@@ -164,7 +164,7 @@
             <!-- 動作 -->
             <div class="mt-auto">
               <!-- 新增 -->
-              <div v-if="true">
+              <div v-if="isCreate">
                 <button
                   class="w-full rounded-lg bg-primary py-4 text-[14px] text-white disabled:cursor-not-allowed disabled:bg-gray disabled:text-gray-dark"
                 >
@@ -403,6 +403,7 @@ export default {
           isDelete: null,
         },
       ],
+      isCreate: true,
     };
   },
   methods: {
