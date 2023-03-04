@@ -167,6 +167,7 @@
               <div v-if="isCreate">
                 <button
                   class="w-full rounded-lg bg-primary py-4 text-[14px] text-white disabled:cursor-not-allowed disabled:bg-gray disabled:text-gray-dark"
+                  @click="triggerActions('create', user)"
                 >
                   新增
                 </button>
@@ -176,12 +177,14 @@
                 <!-- 取消 -->
                 <button
                   class="w-full rounded-lg border-[1px] border-primary py-4 text-[14px] text-primary disabled:cursor-not-allowed disabled:border-gray disabled:text-gray-dark"
+                  @click="triggerActions('cancel')"
                 >
                   取消
                 </button>
                 <!-- 儲存 -->
                 <button
                   class="w-full rounded-lg bg-primary py-4 text-[14px] text-white disabled:cursor-not-allowed disabled:bg-gray disabled:text-gray-dark"
+                  @click="triggerActions('update', user)"
                 >
                   儲存
                 </button>
@@ -417,6 +420,22 @@ export default {
         }
         default: {
           return "mdi-ninja";
+        }
+      }
+    },
+    triggerActions(key, e) {
+      switch (key) {
+        case "create": {
+          console.log("create user", e);
+          break;
+        }
+        case "update": {
+          console.log("update user", e);
+          break;
+        }
+        case "cancel": {
+          console.log("cancel");
+          break;
         }
       }
     },
