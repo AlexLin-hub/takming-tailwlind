@@ -123,6 +123,7 @@
             <h2 class="font-serif text-xl font-bold">使用者資訊</h2>
             <!-- 姓名 -->
             <input
+              v-model="name"
               class="w-full rounded-lg bg-gray-light py-4 px-3 outline-gray-dark"
               type="text"
               placeholder="姓名"
@@ -131,7 +132,13 @@
             <ul class="grid grid-cols-3 gap-x-3">
               <!-- man -->
               <li>
-                <input class="peer hidden" type="radio" name="type" id="man" />
+                <input
+                  class="peer hidden"
+                  type="radio"
+                  name="type"
+                  id="man"
+                  checked
+                />
                 <label
                   for="man"
                   class="flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-[1px] border-transparent bg-gray-light py-2 text-secondary peer-checked:border-gray-dark peer-checked:text-primary hover:peer-enabled:bg-gray hover:peer-enabled:text-primary peer-disabled:text-gray-dark peer-checked:peer-disabled:border-gray peer-checked:peer-disabled:text-gray-dark"
@@ -238,3 +245,17 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      name: "",
+    };
+  },
+  watch: {
+    name() {
+      console.log(this.name);
+    },
+  },
+};
+</script>
