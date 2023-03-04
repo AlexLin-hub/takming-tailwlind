@@ -429,6 +429,11 @@ export default {
       switch (key) {
         case "create": {
           console.log("create user", e);
+          const { name, gender, email, phone, zip, address } = e;
+          if (!name || !gender || !email || !phone || !zip || !address) return;
+          const UID = new Date().getTime();
+          this.items.unshift({ ...e, UID });
+          this.resetUser()
           break;
         }
         case "update": {
@@ -436,7 +441,7 @@ export default {
           const { UID } = e;
           const userIndex = this.items.findIndex((user) => user["UID"] === UID);
           this.items.splice(userIndex, 1, e);
-          this.resetUser()
+          this.resetUser();
           break;
         }
         case "cancel": {
