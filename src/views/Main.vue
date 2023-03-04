@@ -21,11 +21,11 @@
               v-for="item in items"
               :key="item.UID"
               class="col-span-full lg:col-span-6"
-              @click="triggerActions('select', item)"
             >
               <!-- Card -->
               <div
                 class="group relative flex h-[110px] w-full cursor-pointer items-center rounded-[18px] border-[1px] border-solid border-gray bg-white py-[14px] px-[10px] hover:border-white hover:shadow-md"
+                @click="triggerActions('select', item)"
               >
                 <!-- Avatar（區塊 1）-->
                 <div
@@ -48,7 +48,7 @@
                 <!-- 刪除按鈕 -->
                 <button
                   class="absolute top-3 right-3 hidden text-lg hover:text-secondary group-hover:block"
-                  @click="triggerActions('delete', item)"
+                  @click.stop="triggerActions('delete', item)"
                 >
                   <span class="mdi mdi-trash-can"></span>
                 </button>
