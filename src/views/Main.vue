@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
     <div class="container flex h-screen w-[90%] flex-col py-10 lg:w-full">
       <!-- 標題 -->
       <div class="mb-7 grow-0">
@@ -123,6 +123,7 @@
             <h2 class="font-serif text-xl font-bold">使用者資訊</h2>
             <!-- 姓名 -->
             <input
+              v-model="user.name"
               class="w-full rounded-lg bg-gray-light py-4 px-3 outline-gray-dark"
               type="text"
               placeholder="姓名"
@@ -132,11 +133,12 @@
               <!-- man -->
               <li>
                 <input
+                  v-model="user.gender"
+                  id="man"
                   class="peer hidden"
                   type="radio"
                   name="type"
-                  id="man"
-                  checked
+                  value="M"
                 />
                 <label
                   for="man"
@@ -151,10 +153,12 @@
               <!-- woman -->
               <li>
                 <input
+                  v-model="user.gender"
+                  id="woman"
                   class="peer hidden"
                   type="radio"
                   name="type"
-                  id="woman"
+                  value="W"
                 />
                 <label
                   for="woman"
@@ -169,10 +173,12 @@
               <!-- unknow -->
               <li>
                 <input
+                  v-model="user.gender"
+                  id="unknow"
                   class="peer hidden"
                   type="radio"
                   name="type"
-                  id="unknow"
+                  value="O"
                 />
                 <label
                   for="unknow"
@@ -187,12 +193,14 @@
             </ul>
             <!-- 電子郵件 -->
             <input
+              v-model="user.email"
               class="w-full rounded-lg bg-gray-light py-4 px-3 outline-gray-dark"
               type="email"
               placeholder="電子郵件"
             />
             <!-- 聯絡電話 -->
             <input
+              v-model="user.phone"
               class="w-full rounded-lg bg-gray-light py-4 px-3 outline-gray-dark"
               type="tel"
               placeholder="聯絡電話"
@@ -201,12 +209,14 @@
             <div class="flex gap-x-2">
               <!-- 郵遞區號 -->
               <input
+                v-model="user.zip"
                 class="w-[30%] rounded-lg bg-gray-light py-4 px-3 outline-gray-dark"
                 type="number"
                 placeholder="郵遞區號"
               />
               <!-- 地址 -->
               <input
+                v-model="user.address"
                 class="w-[70%] rounded-lg bg-gray-light py-4 px-3 outline-gray-dark"
                 type="text"
                 placeholder="地址"
@@ -248,6 +258,14 @@
 export default {
   data() {
     return {
+      user: {
+        name: "",
+        gender: "M",
+        phone: "",
+        email: "",
+        zip: "",
+        address: "",
+      },
     };
   },
 };
