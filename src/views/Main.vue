@@ -182,7 +182,7 @@ const apiBaseURL = "https://api-takming.herokuapp.com/api/v1";
 export default {
   components: { Card },
   mounted() {
-    this.fetchAPI("GET");
+    this.triggerActions("get");
   },
   data() {
     return {
@@ -199,52 +199,68 @@ export default {
     };
   },
   methods: {
-    triggerActions(key, e) {
-      switch (key) {
-        case "create": {
-          const { name, gender, email, phone, zip, address } = e;
-          if (!name || !gender || !email || !phone || !zip || !address) return;
-          console.log("create user", e);
-          const UID = new Date().getTime();
-          this.items.unshift({ ...e, UID });
-          this.resetUser();
-          break;
-        }
-        case "update": {
-          console.log("update user", e);
-          const { UID } = e;
-          const userIndex = this.items.findIndex((user) => user["UID"] === UID);
-          this.items.splice(userIndex, 1, e);
-          this.resetUser();
-          break;
-        }
-        case "cancel": {
-          console.log("cancel");
-          this.resetUser();
-          break;
-        }
-        case "select": {
-          console.log("select user", e);
-          this.isCreate = false;
-          this.user = Object.assign({}, e);
-          break;
-        }
-        case "delete": {
-          console.log("delete user", e);
-          const { name, UID } = e;
-          const beDelete = confirm(
-            `刪除 ${name} 後，將無法復原。你確定要刪除嗎？`
-          );
-          if (beDelete) {
+    async triggerActions(key, e) {
+      try {
+        switch (key) {
+          case "get": {
+            const res = await this.fetchAPI("GET");
+            const { user } = res;
+            this.items = user.slice(0);
+            break;
+          }
+          case "create": {
+            const { name, gender, email, phone, zip, address } = e;
+            if (!name || !gender || !email || !phone || !zip || !address)
+              return;
+            console.log("create user", e);
+            const user = await this.fetchAPI("POST", e);
+            this.items.unshift(user);
+            this.resetUser();
+            break;
+          }
+          case "update": {
+            console.log("update user", e);
+            const user = await this.fetchAPI("PUT", e);
+            const { UID } = user;
             const userIndex = this.items.findIndex(
               (user) => user["UID"] === UID
             );
-            if (userIndex === -1) return;
-            this.items.splice(userIndex, 1);
+            this.items.splice(userIndex, 1, user);
             this.resetUser();
+            break;
           }
-          break;
+          case "cancel": {
+            console.log("cancel");
+            this.resetUser();
+            break;
+          }
+          case "select": {
+            console.log("select user", e);
+            this.isCreate = false;
+            this.user = Object.assign({}, e);
+            break;
+          }
+          case "delete": {
+            console.log("delete user", e);
+            const { name } = e;
+            const beDelete = confirm(
+              `刪除 ${name} 後，將無法復原。你確定要刪除嗎？`
+            );
+            if (beDelete) {
+              const user = await this.fetchAPI("DELETE", e);
+              const { UID } = user;
+              const userIndex = this.items.findIndex(
+                (user) => user["UID"] === UID
+              );
+              if (userIndex === -1) return;
+              this.items.splice(userIndex, 1);
+              this.resetUser();
+            }
+            break;
+          }
         }
+      } catch (error) {
+        console.error(error);
       }
     },
     resetUser() {
@@ -254,13 +270,12 @@ export default {
     async fetchAPI(method = "GET", request = {}) {
       switch (method) {
         case "GET": {
-          const response = await fetch(`${apiBaseURL}/user`, {
+          return await fetch(`${apiBaseURL}/user`, {
             headers,
             method,
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
               const { returnCode, returnMessage, data: responseData } = data;
               if (returnCode !== "0000") {
                 throw returnMessage;
@@ -268,29 +283,78 @@ export default {
               return responseData;
             })
             .catch((err) => {
-              console.error(err);
+              throw err;
             });
-          const { user } = response;
-          this.items = user.slice(0);
-          break;
         }
         case "POST": {
           const { name, phone, gender, email, zip, address } = request;
-          const response = await fetch(`${apiBaseURL}/user`, {
+          return await fetch(`${apiBaseURL}/user`, {
             headers,
             method,
-            body: { name, phone, gender, email, zip, address },
+            body: JSON.stringify({ name, phone, gender, email, zip, address }),
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
-              return data;
+              const { returnCode, returnMessage, data: responseData } = data;
+              alert(returnMessage);
+              if (returnCode !== "0000") {
+                throw returnMessage;
+              }
+              return responseData;
             })
             .catch((err) => {
-              console.error(err);
+              throw err;
             });
-          console.log({ response });
-          break;
+        }
+        case "PUT": {
+          const { UID, name, phone, gender, email, zip, address } = request;
+          return await fetch(`${apiBaseURL}/user`, {
+            headers,
+            method,
+            body: JSON.stringify({
+              UID,
+              name,
+              phone,
+              gender,
+              email,
+              zip,
+              address,
+            }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              const { returnCode, returnMessage, data: responseData } = data;
+              alert(returnMessage);
+              if (returnCode !== "0000") {
+                throw returnMessage;
+              }
+              return responseData;
+            })
+            .catch((err) => {
+              throw err;
+            });
+        }
+        case "DELETE": {
+          const { UID } = request;
+          return await fetch(
+            `${apiBaseURL}/user?${new URLSearchParams({ UID })}`,
+            {
+              headers,
+              method,
+            }
+          )
+            .then((res) => res.json())
+            .then((data) => {
+              const { returnCode, returnMessage, data: responseData } = data;
+              alert(returnMessage);
+              if (returnCode !== "0000") {
+                throw returnMessage;
+              }
+              return responseData;
+            })
+            .catch((err) => {
+              throw err;
+            });
         }
       }
     },
