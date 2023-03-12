@@ -176,7 +176,7 @@
 <script>
 import Card from "../components/card.vue";
 const { CID, SID } = { CID: "CID", SID: "SID" };
-const headers = { CID, SID };
+const headers = { CID, SID, "Content-Type": "application/json" };
 const apiBaseURL = "https://api-takming.herokuapp.com/api/v1";
 
 export default {
