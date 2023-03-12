@@ -574,10 +574,6 @@ html{
   top: 0.75rem;
 }
 
-.z-0{
-  z-index: 0;
-}
-
 .col-span-full{
   grid-column: 1 / -1;
 }
