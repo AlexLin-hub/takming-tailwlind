@@ -125,7 +125,7 @@
             <div class="flex gap-x-2">
               <!-- 郵遞區號 -->
               <input
-                v-model="user.zip"
+                v-model.number="user.zip"
                 class="w-[30%] rounded-lg bg-gray-light py-4 px-3 outline-gray-dark"
                 type="number"
                 placeholder="郵遞區號"
