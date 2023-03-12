@@ -182,7 +182,7 @@ const apiBaseURL = "https://api-takming.herokuapp.com/api/v1";
 
 export default {
   components: { Card },
-  mounted() {
+  created() {
     this.triggerActions("get");
   },
   data() {
@@ -292,7 +292,7 @@ export default {
           return await fetch(`${apiBaseURL}/user`, {
             headers,
             method,
-            body: JSON.stringify({ name, phone, gender, email, zip, address }),
+            data: JSON.stringify({ name, phone, gender, email, zip, address }),
           })
             .then((res) => res.json())
             .then((data) => {
@@ -377,7 +377,7 @@ export default {
           const res = await axios(`${apiBaseURL}/user`, {
             headers,
             method,
-            body: {
+            data: {
               name,
               phone,
               gender,
@@ -398,7 +398,7 @@ export default {
           const res = await axios(`${apiBaseURL}/user`, {
             headers,
             method,
-            body: {
+            data: {
               UID,
               name,
               phone,
