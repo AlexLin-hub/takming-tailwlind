@@ -174,6 +174,7 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 import Card from "../components/card.vue";
 const { CID, SID } = { CID: "UXpJd01qTXdNekV4TURFPQ==", SID: "D10516239" };
 const headers = { CID, SID, "Content-Type": "application/json" };
@@ -203,7 +204,7 @@ export default {
       try {
         switch (key) {
           case "get": {
-            const res = await this.fetchAPI("GET");
+            const res = await this.axiosAPI("GET");
             const { user } = res;
             this.items = user.slice(0);
             break;
@@ -213,14 +214,14 @@ export default {
             if (!name || !gender || !email || !phone || !zip || !address)
               return;
             console.log("create user", e);
-            const user = await this.fetchAPI("POST", e);
+            const user = await this.axiosAPI("POST", e);
             this.items.unshift(user);
             this.resetUser();
             break;
           }
           case "update": {
             console.log("update user", e);
-            const user = await this.fetchAPI("PUT", e);
+            const user = await this.axiosAPI("PUT", e);
             const { UID } = user;
             const userIndex = this.items.findIndex(
               (user) => user["UID"] === UID
@@ -247,7 +248,7 @@ export default {
               `刪除 ${name} 後，將無法復原。你確定要刪除嗎？`
             );
             if (beDelete) {
-              const user = await this.fetchAPI("DELETE", e);
+              const user = await this.axiosAPI("DELETE", e);
               const { UID } = user;
               const userIndex = this.items.findIndex(
                 (user) => user["UID"] === UID
@@ -358,7 +359,78 @@ export default {
         }
       }
     },
-    // axiosAPI(method = "GET", request = {}) {},
+    async axiosAPI(method = "GET", request = {}) {
+      switch (method) {
+        case "GET": {
+          const res = await axios(`${apiBaseURL}/user`, {
+            headers,
+            method,
+          });
+          const { returnCode, returnMessage, data: responseData } = res.data;
+          if (returnCode !== "0000") {
+            throw returnMessage;
+          }
+          return responseData;
+        }
+        case "POST": {
+          const { name, phone, gender, email, zip, address } = request;
+          const res = await axios(`${apiBaseURL}/user`, {
+            headers,
+            method,
+            body: {
+              name,
+              phone,
+              gender,
+              email,
+              zip,
+              address,
+            },
+          });
+          const { returnCode, returnMessage, data: responseData } = res.data;
+          alert(returnMessage);
+          if (returnCode !== "0000") {
+            throw returnMessage;
+          }
+          return responseData;
+        }
+        case "PUT": {
+          const { UID, name, phone, gender, email, zip, address } = request;
+          const res = await axios(`${apiBaseURL}/user`, {
+            headers,
+            method,
+            body: {
+              UID,
+              name,
+              phone,
+              gender,
+              email,
+              zip,
+              address,
+            },
+          });
+          const { returnCode, returnMessage, data: responseData } = res.data;
+          alert(returnMessage);
+          if (returnCode !== "0000") {
+            throw returnMessage;
+          }
+          return responseData;
+        }
+        case "DELETE": {
+          const { UID } = request;
+          const res = await axios(`${apiBaseURL}/user`, {
+            headers,
+            method,
+            params: { UID },
+          });
+          const { returnCode, returnMessage, data: responseData } = res.data;
+          alert(returnMessage);
+          if (returnCode !== "0000") {
+            throw returnMessage;
+          }
+          return responseData;
+        }
+      }
+    },
   },
 };
 </script>
