@@ -175,6 +175,10 @@
 </template>
 <script>
 import Card from "../components/card.vue";
+const { CID, UID } = { CID: "CID", UID: "UID" };
+const header = { CID, UID };
+const apiBaseURL = "https://api-takming.herokuapp.com/api/v1";
+
 export default {
   components: { Card },
   data() {
@@ -441,6 +445,8 @@ export default {
       this.isCreate = true;
       this.user = Object.assign({}, this.$options.data().user);
     },
+    fetchAPI(method = "GET", request = {}) {},
+    axiosAPI(method = "GET", request = {}) {},
   },
 };
 </script>
