@@ -963,6 +963,16 @@ html{
   }
 }
 
+@media (min-width: 768px){
+  .md\:col-span-6{
+    grid-column: span 6 / span 6;
+  }
+
+  .md\:col-start-4{
+    grid-column-start: 4;
+  }
+}
+
 @media (min-width: 1024px){
   .lg\:col-span-4{
     grid-column: span 4 / span 4;
@@ -974,6 +984,10 @@ html{
 
   .lg\:col-span-8{
     grid-column: span 8 / span 8;
+  }
+
+  .lg\:col-start-5{
+    grid-column-start: 5;
   }
 
   .lg\:block{
